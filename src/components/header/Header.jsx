@@ -18,7 +18,7 @@ function Header() {
                     <div className="logo mr-14 font-kumbh font-bold text-[2rem] flex justify-center items-center">
                         <a href='#' className=''>sneakers</a>
                     </div>
-                    {showMegaMenu ? <ul className={`${window.innerWidth > "375" ? "links flex flex-row gap-6 items-center" : "fixed z-10 py-4 pr-20 pl-6 left-0 top-0 h-screen bg-slate-100"}`}>
+                    {showMegaMenu || window.innerWidth > "375" ? <ul className={`${window.innerWidth > "375" ? "links flex flex-row gap-6 items-center" : "fixed z-10 py-4 pr-20 pl-6 left-0 top-0 h-screen bg-slate-100"}`}>
                         {showMegaMenu && window.innerWidth <= "375" && <span onClick={handlCloseMegaMenu} className='text-lg font-extrabold cursor-pointer'>x</span>}
                         {["collections", "men", "women", "about", "contact"].map((el, index) => (
                             <li key={index} className={`${window.innerWidth > "375" ? "list-item-lg" : "list-item-sm"}`}><a href=''>{el}</a></li>

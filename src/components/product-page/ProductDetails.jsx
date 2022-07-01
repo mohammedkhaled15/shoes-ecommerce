@@ -4,12 +4,14 @@ import { ReactComponent as Plus } from "../../assets/images/icon-plus.svg"
 import { ReactComponent as Minus } from "../../assets/images/icon-minus.svg"
 import { appContext } from './../../context/ShoppingContext'
 import axios from 'axios'
+import { products } from '../../data'
 
 function ProductDetails() {
-    const { count, handleIncreament, handleDecreament, handleAddToCart, productNameRef, productPriceRef, setProductsList, productsList } = useContext(appContext)
+    const { handleIncreament, handleDecreament, handleAddToCart, productPriceRef, setProductsList, productsList } = useContext(appContext)
     useEffect(() => {
-        axios.get("http://localhost:3000/products")
-            .then(res => setProductsList(res.data))
+        // axios.get("http://localhost:3000/products")
+        //     .then(res => setProductsList(res.data))
+        setProductsList(products)
     }, [])
     return (
         <>

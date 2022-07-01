@@ -1,13 +1,14 @@
-import { createContext, useRef, useState } from "react";
+import { createContext, useRef, useState, useEffect } from "react";
 
 import product1 from "../assets/images/image-product-1.jpg"
+
+import { products } from "../data";
 
 const appContext = createContext()
 
 function ShoppingContext(props) {
     const [productsList, setProductsList] = useState([])
     const [cartCount, setCartCount] = useState(0)
-    const [heroImg, setHeroImg] = useState(product1)
     const [imgIndic, setimgIndic] = useState(0)
     const imgRefs = useRef([])
     const [showFullGallery, setShowFullGallery] = useState(false)
@@ -27,10 +28,17 @@ function ShoppingContext(props) {
             require("./../assets/images/image-product-4-thumbnail.jpg"),
         ]
     })
+    const [heroImg, setHeroImg] = useState(imgSrcs.heroes[0])
     const imgProfileRef = useRef(null)
     const productNameRef = useRef()
     const productPriceRef = useRef()
     const [choosenProducts, setChoosenProducts] = useState([])
+
+    useEffect(() => {
+        // axios.get("http://localhost:3000/products")
+        //     .then(res => setProductsList(res.data))
+        setProductsList(products)
+    }, [])
 
     const clickHandler = (e) => {
         imgRefs.current.forEach((img, index) => {

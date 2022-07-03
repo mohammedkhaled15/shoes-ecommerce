@@ -4,19 +4,19 @@ import { ReactComponent as Delete } from "../../assets/images/icon-delete.svg"
 import { motion, AnimatePresence } from 'framer-motion'
 
 function ChoosenProduct() {
-    const { imgSrcs, choosenProducts, handleDeleteProduct } = useContext(appContext)
+    const { choosenProducts, handleDeleteProduct } = useContext(appContext)
     return (
         <AnimatePresence>
             {choosenProducts.map((product) => (
                 <motion.div
-                    key={"box"}
+                    key={product.id}
                     initial={{ opacity: 0, y: 0 }}
-                    animate={{ opacity: 1, y: 0, transition: { duration: 3, ease: 'easeInOut' } }}
-                    exit={{ opacity: 0, y: 0, transition: { duration: 3, ease: "easeInOut" } }}
+                    animate={{ opacity: 1, y: 0, transition: { duration: 1.5, ease: 'easeInOut' } }}
+                    exit={{ opacity: 0, x: 200, transition: { duration: 0.5, ease: "easeInOut" } }}
                     className=' flex flex-row mb-8 justify-between' >
                     <div className="product-details flex flex-row gap-4">
                         <div className="product-img w-12 rounded-lg overflow-hidden">
-                            <img src={imgSrcs.thumbnails[1]} alt="" />
+                            <img src={product.img} alt="" />
                         </div>
                         <div className="product-info">
                             <h5 className='text-sm text-darkGrayishBlue capitalize'>{product.name}</h5>

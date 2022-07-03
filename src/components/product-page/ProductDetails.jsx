@@ -6,33 +6,32 @@ import { appContext } from './../../context/ShoppingContext'
 import axios from 'axios'
 import { products } from '../../data'
 
-function ProductDetails() {
-    const { handleIncreament, handleDecreament, handleAddToCart, productPriceRef, setProductsList, productsList } = useContext(appContext)
-    useEffect(() => {
-        // axios.get("http://localhost:3000/products")
-        //     .then(res => setProductsList(res.data))
-        setProductsList(products)
-    }, [])
+function ProductDetails({ product, index }) {
+    const { handleIncreament, handleDecreament, handleAddToCart, productPriceRef, products, productsList } = useContext(appContext)
+    // useEffect(() => {
+    //     // axios.get("http://localhost:3000/products")
+    //     //     .then(res => setProductsList(res.data))
+    //     setProductsList(products)
+    // }, [])
     return (
-        <>
-            {productsList.map((product, index) => (
-                <div className='product-details' key={product.id}>
-                    <h5 className=' text-Orange uppercase mb-6'>sneaker company</h5>
-                    <h1 className='capitalize text-5xl mb-12'>{product.name}</h1>
-                    <p className=' text-darkGrayishBlue mb-12 text-lg'>{product.description}</p>
-                    <h3 ref={productPriceRef} className='price-discount'>${product.price * product.discount}</h3>
-                    <del className='block text-darkGrayishBlue mb-10'>${product.price}</del>
-                    <div className='btns flex lg:flex-row flex-col  gap-8 mb-10'>
-                        <div className=" flex flex-row justify-center items-center">
-                            <button onClick={() => handleDecreament(index)} className='counter-btn rounded-l-xl '><Minus /></button>
-                            <span className='counter-btn '>{product.count}</span>
-                            <button onClick={() => handleIncreament(index)} className='counter-btn rounded-r-xl '><Plus /></button>
-                        </div>
-                        <div onClick={() => handleAddToCart(product)} className={` bg-Orange p-4 rounded-xl cursor-pointer text-grayishBlue flex lg:flex-row justify-center items-center gap-4 px-20 `}><Cart /> <span>Add to Cart</span></div>
-                    </div>
+
+        <div className='product-details' key={product.id}>
+            <h5 className=' text-Orange uppercase mb-6'>sneaker company</h5>
+            <h1 className='capitalize text-5xl mb-12'>{product.name}</h1>
+            <p className=' text-darkGrayishBlue mb-12 text-lg whitespace-normal'>{product.description}</p>
+            <h3 ref={productPriceRef} className='price-discount'>${product.price - (product.price * product.discount)}</h3>
+            <span className='inline-block text-Orange text-sm  p-1 bg-lightGrayishBlue ml-6 rounded-lg left-full'>{product.discount * 100}%</span>
+            <del className='block text-darkGrayishBlue mb-10'>${product.price}</del>
+            <div className='btns flex lg:flex-row flex-col  gap-8 mb-10'>
+                <div className=" flex flex-row justify-center items-center">
+                    <button onClick={() => handleDecreament(index)} className='counter-btn rounded-l-xl '><Minus /></button>
+                    <span className='counter-btn '>{product.count}</span>
+                    <button onClick={() => handleIncreament(index)} className='counter-btn rounded-r-xl '><Plus /></button>
                 </div>
-            ))}
-        </>
+                <div onClick={() => handleAddToCart(product)} className={` bg-Orange p-4 rounded-xl cursor-pointer text-grayishBlue flex lg:flex-row justify-center items-center gap-4 px-20 `}><Cart /> <span>Add to Cart</span></div>
+            </div>
+        </div>
+
     )
 }
 

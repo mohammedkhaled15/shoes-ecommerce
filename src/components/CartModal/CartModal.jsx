@@ -10,7 +10,7 @@ function CartModal() {
             <h2 className='uppercase p-3'>cart</h2>
             <div className='w-full h-[2px] bg-slate-300'></div>
             <div className="cart-content p-3">
-                {choosenProducts.length ? <ChoosenProduct /> : <motion.h4 initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { duration: 1, ease: "easeInOut" } }} className='p-6 text-center'>Nothing in Your Cart</motion.h4>}
+                {choosenProducts.length ? <ChoosenProduct /> : <motion.h4 initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { duration: 1, delay: 0.5, ease: "easeInOut" } }} className='p-6 text-center'>Nothing in Your Cart</motion.h4>}
                 <button className='capitalize p-2 block bg-Orange rounded-lg text-lightGrayishBlue w-[100%] m-auto my-4'>checkout</button>
             </div>
         </div>

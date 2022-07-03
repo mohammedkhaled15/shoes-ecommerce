@@ -9,9 +9,9 @@ const appContext = createContext()
 function ShoppingContext(props) {
     const [productsList, setProductsList] = useState([])
     const [cartCount, setCartCount] = useState(0)
-    const [imgIndic, setimgIndic] = useState(0)
-    const imgRefs = useRef([])
-    const [showFullGallery, setShowFullGallery] = useState(false)
+    // const [imgIndic, setimgIndic] = useState(0)
+    // const imgRefs = useRef([])
+    // const [showFullGallery, setShowFullGallery] = useState({ show: false, product: {} })
     const [showCartModal, setShowCartModal] = useState()
     const [showMegaMenu, setShowMegaMenu] = useState(false)
     const [imgSrcs, setImgSrcs] = useState({
@@ -28,37 +28,34 @@ function ShoppingContext(props) {
             require("./../assets/images/image-product-4-thumbnail.jpg"),
         ]
     })
-    const [heroImg, setHeroImg] = useState(imgSrcs.heroes[0])
+    // const [heroImg, setHeroImg] = useState()
     const imgProfileRef = useRef(null)
     const productNameRef = useRef()
     const productPriceRef = useRef()
     const [choosenProducts, setChoosenProducts] = useState([])
 
-    useEffect(() => {
-        // axios.get("http://localhost:3000/products")
-        //     .then(res => setProductsList(res.data))
-        setProductsList(products)
-    }, [])
 
-    const clickHandler = (e) => {
-        imgRefs.current.forEach((img, index) => {
-            img.classList.remove("active")
-            if (e.target.dataset.src == index) {
-                img.classList.add("active")
-            }
-        })
-        setHeroImg(imgSrcs.heroes[e.target.dataset.src])
-        setimgIndic(+e.target.dataset.src)
-    }
+    // const clickHandler = (e, index, ind) => {
+    //     imgRefs.current.forEach((img, ind) => {
+    //         img.classList.remove("active")
+    //         if (e.target.dataset.src == ind) {
+    //             img.classList.add("active")
+    //         }
+    //     })
+    //     // console.log(products[index].heroes);
+    //     // console.log(e.target.dataset.src);
+    //     setHeroImg(products[index].heroes[e.target.dataset.src])
+    //     setimgIndic(+e.target.dataset.src)
+    // }
 
     const handleIncreament = (index) => {
-        const newProductsList = [...productsList]
+        const newProductsList = [...products]
         newProductsList[index].count++
         setProductsList(newProductsList)
     }
 
     const handleDecreament = (index) => {
-        const newProductsList = [...productsList]
+        const newProductsList = [...products]
         newProductsList[index].count--
         setProductsList(newProductsList)
     }
@@ -76,60 +73,56 @@ function ShoppingContext(props) {
                     name: product.name,
                     price: product.price,
                     count: product.count,
-                    totalPrice: product.price - (product.price * product.discount)
+                    totalPrice: product.price - (product.price * product.discount),
+                    img: product.thumbnails[0]
                 }])
             }
         }
     }
 
-    const handleShowFullGallery = () => {
-        if (window.innerWidth > "375" && !showFullGallery) {
-            setShowFullGallery(true)
-        } else {
+    // const handleShowFullGallery = (e) => {
+    //     if (window.innerWidth > "375" && !showFullGallery.show) {
+    //         setShowFullGallery({ show: true, product: products[e.target.dataset.index] })
+    //     }
+    // }
 
-        }
-    }
+    // const handleNext = (index, setHeroImg, imgRefs) => {
+    //     if (imgIndic < 3) {
+    //         let newImgIndic = imgIndic + 1
+    //         setimgIndic(newImgIndic)
+    //         setHeroImg(products[index].heroes[newImgIndic])
+    //         imgRefs.current.forEach((img, index) => {
+    //             img.classList.remove("active")
+    //             if (newImgIndic == index) {
+    //                 img.classList.add("active")
+    //             }
+    //         })
+    //     }
+    //     console.log(index);
+    // }
 
-    const handleNext = () => {
-        if (imgIndic < 3) {
+    // const handlePrev = (index, setHeroImg, imgRefs) => {
+    //     if (imgIndic > 0) {
+    //         let newImgIndic = imgIndic - 1
+    //         setimgIndic(newImgIndic)
+    //         setHeroImg(products[index].heroes[newImgIndic])
+    //         imgRefs.current.forEach((img, index) => {
+    //             img.classList.remove("active")
+    //             if (newImgIndic == index) {
+    //                 img.classList.add("active")
+    //             }
+    //         })
+    //     }
+    // }
 
-            let newImgIndic = imgIndic + 1
-            setimgIndic(newImgIndic)
-            setHeroImg(imgSrcs.heroes[newImgIndic])
-
-            imgRefs.current.forEach((img, index) => {
-                img.classList.remove("active")
-                if (newImgIndic == index) {
-                    img.classList.add("active")
-                }
-            })
-        }
-    }
-
-    const handlePrev = () => {
-        if (imgIndic > 0) {
-
-            let newImgIndic = imgIndic - 1
-            setimgIndic(newImgIndic)
-            setHeroImg(imgSrcs.heroes[newImgIndic])
-            imgRefs.current.forEach((img, index) => {
-                img.classList.remove("active")
-                if (newImgIndic == index) {
-                    img.classList.add("active")
-                }
-            })
-        }
-    }
-
-    const handleClose = () => {
-        setShowFullGallery(false)
-    }
+    // const handleClose = () => {
+    //     setShowFullGallery(false)
+    // }
 
     const handleProfileClick = () => {
         setShowCartModal(!showCartModal)
         imgProfileRef.current.classList.toggle("active")
     }
-    console.log(showCartModal)
 
     const handleDeleteProduct = (productID, productCount) => {
         setCartCount(prev => prev - productCount)
@@ -144,7 +137,7 @@ function ShoppingContext(props) {
         setShowMegaMenu(false)
     }
     return (
-        <appContext.Provider value={{ cartCount, showFullGallery, clickHandler, heroImg, imgRefs, handleIncreament, handleDecreament, handleAddToCart, handleShowFullGallery, handleNext, handlePrev, imgSrcs, handleClose, showCartModal, handleProfileClick, imgProfileRef, productNameRef, choosenProducts, productPriceRef, handleDeleteProduct, productsList, setProductsList, showMegaMenu, handleBurgerClick, handlCloseMegaMenu }}>
+        <appContext.Provider value={{ cartCount, handleIncreament, handleDecreament, handleAddToCart, imgSrcs, showCartModal, handleProfileClick, imgProfileRef, productNameRef, choosenProducts, productPriceRef, handleDeleteProduct, products, setProductsList, showMegaMenu, handleBurgerClick, handlCloseMegaMenu }}>
             {props.children}
         </appContext.Provider>
     )

@@ -22,7 +22,7 @@ img {
   hover:text-black hover:after:content-[""] hover:after:h-[3px] hover:after:w-full hover:after:bg-Orange hover:after:left-0 hover:after:absolute hover:after:top-[40px] hover:after:rounded-sm;
 }
 .price-discount {
-  @apply font-bold text-2xl tracking-wider mb-4 relative inline-block after:content-["50%"] after:text-Orange after:text-sm after:absolute after:p-1 after:bg-lightGrayishBlue after:ml-6 after:rounded-lg after:left-full;
+  @apply font-bold text-2xl tracking-wider mb-4 relative inline-block;
 }
 
 .counter-btn {
@@ -59,7 +59,7 @@ img {
 }
 
 .nav-btn-sm {
-  @apply absolute top-[50%] p-6 w-2 h-2 rounded-full    border border-Orange cursor-pointer grid justify-center content-center;
+  @apply absolute top-[50%] p-6 w-2 h-2 rounded-full  border border-Orange cursor-pointer grid justify-center content-center;
 }
 .close-btn {
   @apply absolute  p-6 top-[5%] right-[20%] -translate-y-full translate-x-full w-3 h-3 rounded-full  cursor-pointer;

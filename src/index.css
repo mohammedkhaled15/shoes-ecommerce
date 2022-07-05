@@ -13,6 +13,7 @@ img {
   max-width: 100%;
   overflow: hidden;
 }
+
 .list-item-lg {
   @apply capitalize text-darkGrayishBlue relative transition-all  duration-700 after:duration-1000 after:transition-all 
   hover:text-black hover:after:content-[""] hover:after:h-1 hover:after:w-full hover:after:bg-Orange hover:after:left-0 hover:after:absolute hover:after:top-[50px] hover:after:rounded-sm;
@@ -59,7 +60,7 @@ img {
 }
 
 .nav-btn-sm {
-  @apply absolute top-[50%] p-6 w-2 h-2 rounded-full  border border-Orange cursor-pointer grid justify-center content-center;
+  @apply absolute top-[50%] p-6 w-2 h-2 rounded-full  border border-Orange cursor-pointer grid justify-center content-center hover:bg-Orange active:bg-orange-300;
 }
 .close-btn {
   @apply absolute  p-6 top-[5%] right-[20%] -translate-y-full translate-x-full w-3 h-3 rounded-full  cursor-pointer;

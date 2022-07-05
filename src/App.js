@@ -4,11 +4,11 @@ import ProductPage from "./components/product-page/ProductPage";
 import { appContext } from "./context/ShoppingContext";
 
 function App() {
-  const { products } = useContext(appContext);
+  const { productsList } = useContext(appContext);
   return (
     <div className="App font-kumbh font-bold">
       <Header />
-      {products.map((product, index) => (
+      {productsList.map((product, index) => (
         <ProductPage key={index} product={product} index={index} />
       ))}
     </div>

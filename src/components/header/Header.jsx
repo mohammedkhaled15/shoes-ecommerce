@@ -18,12 +18,20 @@ function Header() {
                     <div className="logo mr-14 font-kumbh font-bold text-[2rem] flex justify-center items-center">
                         <a href='#' className=''>sneakers</a>
                     </div>
-                    {showMegaMenu || window.innerWidth > "375" ? <ul className={`${window.innerWidth > "375" ? "links flex flex-row gap-6 items-center" : "fixed z-10 py-4 pr-20 pl-6 left-0 top-0 h-screen bg-slate-100"}`}>
-                        {showMegaMenu && window.innerWidth <= "375" && <span onClick={handlCloseMegaMenu} className='text-lg font-extrabold cursor-pointer'>x</span>}
-                        {["collections", "men", "women", "about", "contact"].map((el, index) => (
-                            <li key={index} className={`${window.innerWidth > "375" ? "list-item-lg" : "list-item-sm"}`}><a href=''>{el}</a></li>
-                        ))}
-                    </ul> : ""}
+                    <AnimatePresence>
+                        {showMegaMenu || window.innerWidth > "375" ? <motion.ul
+                            initial={{ opacity: 0, x: -100 }}
+                            animate={{ opacity: 1, x: 0, transition: { duration: 0.5, ease: 'easeInOut' } }}
+                            exit={{ opacity: 0, x: -100, transition: { duration: 0.5 } }}
+                            className={`${window.innerWidth > "375" ? "links flex flex-row gap-6 items-center" : "fixed z-10 py-4 pr-20 pl-6 left-0 top-0 h-screen bg-slate-100"}`}>
+                            {showMegaMenu && window.innerWidth <= "375" && <span onClick={handlCloseMegaMenu} className='text-lg font-extrabold cursor-pointer'>x</span>}
+
+                            {["collections", "men", "women", "about", "contact"].map((el, index) => (
+                                <li key={index} className={`${window.innerWidth > "375" ? "list-item-lg" : "list-item-sm"}`}><a href=''>{el}</a></li>
+                            ))}
+
+                        </motion.ul> : ""}
+                    </AnimatePresence>
                 </div>
                 <div className={`profile flex flex-row gap-6 items-center justify-center relative ${window.innerWidth > "375" ? "w-[10%]" : "w-1/3"}`}>
                     <ShoppingCart />

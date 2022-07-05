@@ -1,18 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import { ReactComponent as Cart } from "./../../assets/images/icon-cart.svg"
 import { ReactComponent as Plus } from "../../assets/images/icon-plus.svg"
 import { ReactComponent as Minus } from "../../assets/images/icon-minus.svg"
 import { appContext } from './../../context/ShoppingContext'
-import axios from 'axios'
-import { products } from '../../data'
 
 function ProductDetails({ product, index }) {
-    const { handleIncreament, handleDecreament, handleAddToCart, productPriceRef, products, productsList } = useContext(appContext)
-    // useEffect(() => {
-    //     // axios.get("http://localhost:3000/products")
-    //     //     .then(res => setProductsList(res.data))
-    //     setProductsList(products)
-    // }, [])
+    const { handleIncreament, handleDecreament, handleAddToCart, productPriceRef } = useContext(appContext)
     return (
 
         <div className='product-details' key={product.id}>

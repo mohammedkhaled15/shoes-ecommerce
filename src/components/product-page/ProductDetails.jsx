@@ -3,6 +3,7 @@ import { ReactComponent as Cart } from "./../../assets/images/icon-cart.svg"
 import { ReactComponent as Plus } from "../../assets/images/icon-plus.svg"
 import { ReactComponent as Minus } from "../../assets/images/icon-minus.svg"
 import { appContext } from './../../context/ShoppingContext'
+import { ToastContainer } from 'react-toastify'
 
 function ProductDetails({ product, index }) {
     const { handleIncreament, handleDecreament, handleAddToCart, productPriceRef } = useContext(appContext)

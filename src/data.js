@@ -41,25 +41,25 @@ export const products = [
       require("./assets/images/product2/product-2-4.jpg"),
     ],
   },
-  {
-    id: "03",
-    name: "road map",
-    price: 20000,
-    count: 0,
-    discount: 0.8,
-    description:
-      "this mobile is the best mobile ever, it has a good battery life lasts for more than 40 hrs, has a perfect processor that can deal with all new applications",
-    thumbnails: [
-      require("./assets/images/1.jpg"),
-      require("./assets/images/2.jpg"),
-      require("./assets/images/3.jpg"),
-      require("./assets/images/4.jpg"),
-    ],
-    heroes: [
-      require("./assets/images/1.jpg"),
-      require("./assets/images/2.jpg"),
-      require("./assets/images/3.jpg"),
-      require("./assets/images/4.jpg"),
-    ],
-  },
+  // {
+  //   id: "03",
+  //   name: "road map",
+  //   price: 20000,
+  //   count: 0,
+  //   discount: 0.8,
+  //   description:
+  //     "this mobile is the best mobile ever, it has a good battery life lasts for more than 40 hrs, has a perfect processor that can deal with all new applications",
+  //   thumbnails: [
+  //     require("./assets/images/1.jpg"),
+  //     require("./assets/images/2.jpg"),
+  //     require("./assets/images/3.jpg"),
+  //     require("./assets/images/4.jpg"),
+  //   ],
+  //   heroes: [
+  //     require("./assets/images/1.jpg"),
+  //     require("./assets/images/2.jpg"),
+  //     require("./assets/images/3.jpg"),
+  //     require("./assets/images/4.jpg"),
+  //   ],
+  // },
 ];

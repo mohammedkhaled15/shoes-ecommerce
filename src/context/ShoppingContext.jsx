@@ -1,4 +1,5 @@
 import { createContext, useRef, useState } from "react";
+import { toast } from "react-toastify";
 
 import { products } from "../data";
 
@@ -45,7 +46,26 @@ function ShoppingContext(props) {
                     img: product.thumbnails[0]
                 }])
             }
+            product.count > 1 ? toast.success('Your Items Have been Added successfully', {
+                position: "top-center",
+                autoClose: 1500,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            }) :
+                toast.success('Your Item Has been Added successfully', {
+                    position: "top-center",
+                    autoClose: 1500,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                })
         }
+
     }
 
     const handleProfileClick = () => {
@@ -58,6 +78,15 @@ function ShoppingContext(props) {
         let clonedProducts = [...choosenProducts]
         let productsAfterDelete = clonedProducts.filter((product) => product.id !== productID)
         setChoosenProducts(productsAfterDelete)
+        toast.warn("Your Item Has been Deleted", {
+            position: "top-center",
+            autoClose: 1500,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        })
     }
     const handleBurgerClick = () => {
         setShowMegaMenu(!showMegaMenu)

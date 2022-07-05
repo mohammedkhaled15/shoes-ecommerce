@@ -46,6 +46,7 @@ function Header() {
                     initial={{ opacity: 0, y: -100 }}
                     animate={{ opacity: 1, y: 25, transition: { duration: 0.5, ease: 'easeInOut' } }}
                     exit={{ opacity: 0, y: -100, transition: { duration: 0.5 } }}
+                    className="relative z-20"
                 >
                     <CartModal />
                 </motion.div>)}

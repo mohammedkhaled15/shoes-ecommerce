@@ -7,7 +7,7 @@ function CartModal() {
     const { choosenProducts, handleProfileClick } = useContext(appContext)
     return (
         <div className="backdrop fixed top-0 left-0 bottom-0 right-0 z-20 flex h-screen" onClick={handleProfileClick}>
-            <div onClick={e => e.stopPropagation()} className={`cart-modal z-30 absolute opacity-1 rounded-2xl top-0 right-0 m-auto mr-4 shadow-zinc-700 shadow-2xl bg-slate-100 w-[90vw] ${window.innerWidth > "375" ? "w-[40vw]" : ""}`}>
+            <div onClick={e => e.stopPropagation()} className={`cart-modal z-30 absolute opacity-1 rounded-2xl top-0 right-0 m-auto mr-4 shadow-zinc-700 shadow-2xl bg-slate-100 w-[90vw] ${window.innerWidth > "450" ? "w-[40vw]" : ""}`}>
                 <h2 className='uppercase p-3'>cart</h2>
                 <div className='w-full h-[2px] bg-slate-300'></div>
                 <div className="cart-content p-3">

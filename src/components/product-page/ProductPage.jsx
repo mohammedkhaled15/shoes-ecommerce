@@ -21,7 +21,7 @@ function ProductPage({ product, index }) {
 
     const handleShowFullGallery = (e) => {
         e.stopPropagation()
-        if (window.innerWidth > "375" && !showFullGallery.show) {
+        if (window.innerWidth > "450" && !showFullGallery.show) {
             setShowFullGallery(true)
         }
     }
@@ -65,7 +65,7 @@ function ProductPage({ product, index }) {
             <div key={index} className="container mt-10 mb-10 grid grid-cols-1 lg:grid-cols-2 justify-center items-center lg:gap-10 md:gap-5 ">
 
                 <ProductShow
-                    heroClick={window.innerWidth > "375" ? true : false}
+                    heroClick={window.innerWidth > "450" ? true : false}
                     product={product}
                     index={index}
                     heroImg={heroImg}

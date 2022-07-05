@@ -24,16 +24,16 @@ function ProductShow({ product, index, heroClick, heroImg, setHeroImg, setimgInd
 
         <div onClick={e => e.stopPropagation()} className='product-show max-w-lg mx-auto' >
 
-            <div onClick={e => handleShowFullGallery(e)} className={`hero  mb-10 rounded-3xl overflow-hidden w-full   ${window.innerWidth <= "375" ? "w-screen rounded-none -ml-4 -mt-10 relative" : ""} ${heroClick ? "cursor-pointer" : ""}`}>
+            <div onClick={e => handleShowFullGallery(e)} className={`hero  mb-10 rounded-3xl overflow-hidden w-full   ${window.innerWidth <= "450" ? "w-screen rounded-none -ml-4 -mt-10 relative" : ""} ${heroClick ? "cursor-pointer" : ""}`}>
 
                 <img data-index={index} src={heroImg} alt={`Product${index}`} />
 
-                {window.innerWidth <= "375" && !showCartModal ? <><span onClick={e => handlePrev(e)} className={` ${imgIndic === 0 ? "!hidden" : "!grid"} nav-btn-sm left-[10%]  -translate-x-1/2 -translate-y-1/2`}><Prev /></span>
+                {window.innerWidth <= "450" && !showCartModal ? <><span onClick={e => handlePrev(e)} className={` ${imgIndic === 0 ? "!hidden" : "!grid"} nav-btn-sm left-[10%]  -translate-x-1/2 -translate-y-1/2`}><Prev /></span>
                     <span onClick={e => handleNext(e)} className={`${imgIndic === 3 ? "!hidden" : "!grid"} nav-btn-sm  right-[10%] translate-x-1/2 -translate-y-1/2`}><Next /></span></> : ""}
 
             </div>
 
-            <div className={`${window.innerWidth <= "375" ? "hidden" : "flex flex-row gap-8"} thumbnails w-full `}>
+            <div className={`${window.innerWidth <= "450" ? "hidden" : "flex flex-row gap-8"} thumbnails w-full `}>
 
                 {product.thumbnails.map((el, ind) => (
 
